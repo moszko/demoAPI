@@ -1,11 +1,28 @@
 version: '3.8'
 
 services:
+  db:
+    image: vldemo-db
+    restart: always
+    build:
+      context: ./
+      dockerfile: docker/db/Dockerfile
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres-passwd
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - db-volume:/var/lib/postresql/data
+
   server:
     image: vldemo-server
     container_name: vl_server
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: docker/server/Dockerfile
     ports:
       - "7777:80"
+    depends_on:
+      - db
+
+volumes:
+  db-volume:
