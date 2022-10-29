@@ -1,5 +1,6 @@
 #!/bin/bash
 cd "$(dirname "$0")"
+mkdir -p temp
 cd temp
 
 echo "downloading data..."
