@@ -13,6 +13,12 @@ services:
     volumes:
       - db-volume:/var/lib/postresql/data
 
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
   server:
     image: vldemo-server
     container_name: vl_server
@@ -20,7 +26,7 @@ services:
       context: ./
       dockerfile: docker/server/Dockerfile
     ports:
-      - "7777:80"
+      - 7777:80
     depends_on:
       - db
 
