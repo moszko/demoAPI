@@ -1,6 +1,6 @@
-# 3rd-round-Bartlomiej-Lichtanski
+# General
 
-This a demo recruitment application. It exposes two endpoints:
+This a demo application. It exposes two endpoints:
 1. GET /api/v1/trademarks/word/{name} - get data of an existing word trademark or null
 2. GET /api/v1/trademarks/word/similar/{name} - get an array of similiar word trademarks
 
